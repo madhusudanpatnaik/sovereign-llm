@@ -1,0 +1,8 @@
+# sovereign: generated from pyproject.toml — keep the two in sync (tests/test_packaging.py checks).
+# Core runtime. Install from this directory: pip install -r requirements.txt
+pydantic>=2.7
+numpy>=1.26
+httpx>=0.27
+datasets>=3.0
+huggingface_hub>=0.24
+-e .

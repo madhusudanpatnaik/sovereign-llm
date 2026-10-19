@@ -1,0 +1,47 @@
+# Lint, format check, strict type check and the full test suite. Nothing here needs an API key,
+# a GPU or a model download: every model call is tested through a scripted stand-in or the real
+# SDK over a mock transport.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: CPU-only PyTorch (the CPU LoRA smoke test; skips the multi-GB CUDA wheels)
+        run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Lint
+        run: ruff check src tests
+
+      - name: Format
+        run: ruff format --check src tests
+
+      - name: Types
+        run: mypy
+
+      - name: Tests
+        run: pytest -q

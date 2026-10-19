@@ -1,0 +1,5 @@
+# sovereign: generated from pyproject.toml — keep the two in sync (tests/test_packaging.py checks).
+# Optional group 'serve' (same as: pip install -e ".[serve]")
+-r requirements.txt
+vllm>=0.31,<0.32; sys_platform == 'linux'
+vllm-bnb-plugin>=0.0.3; sys_platform == 'linux'

@@ -1,0 +1,8 @@
+# sovereign: generated from pyproject.toml — keep the two in sync (tests/test_packaging.py checks).
+# Optional group 'train' (same as: pip install -e ".[train]")
+-r requirements.txt
+torch>=2.4
+transformers>=5.0
+peft>=0.17
+accelerate>=1.0
+bitsandbytes>=0.48.1; sys_platform == 'linux'

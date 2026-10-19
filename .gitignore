@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tooling caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# OS
+.DS_Store
+
+# training runs, adapters, merged weights, prediction files
+runs/
+preds/
+*.safetensors
+
+# secrets and downloaded data — fetched per machine, never committed
+.env
+data/

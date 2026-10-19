@@ -1,0 +1,4 @@
+# sovereign: generated from pyproject.toml — keep the two in sync (tests/test_packaging.py checks).
+# Optional group 'compress' (same as: pip install -e ".[compress]")
+-r requirements.txt
+llmcompressor>=0.7

@@ -1,0 +1,4 @@
+# sovereign: generated from pyproject.toml — keep the two in sync (tests/test_packaging.py checks).
+# Optional group 'frontier' (same as: pip install -e ".[frontier]")
+-r requirements.txt
+anthropic>=1.13
